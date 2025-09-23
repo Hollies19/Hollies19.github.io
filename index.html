@@ -1,0 +1,282 @@
+yukun-site/
+├─ index.html
+├─ styles.css
+├─ script.js
+├─ content.json            # ← 所有文字在这里改
+└─ assets/
+   ├─ avatar.jpg           # 头像（圆形显示）
+   ├─ timeline.png         # “我的历程”信息图（长图/SVG都可）
+   ├─ wechat-qrcode.png    # 微信/公众号二维码
+   └─ icon.svg             # 网站图标（可选）
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-bind="site.title">个人品牌网站</title>
+  <meta name="description" data-bind="site.description" content="让土地、河流与人的故事在当下发生。" />
+  <link rel="icon" href="assets/icon.svg" />
+  <link rel="preload" href="assets/avatar.jpg" as="image" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <nav class="nav wrap">
+      <a class="brand" href="#hero" data-bind="site.brand">滕宇堃</a>
+      <div class="spacer"></div>
+      <a href="#mission">愿景</a>
+      <a href="#experience">经验</a>
+      <a href="#services">服务</a>
+      <a href="#timeline">历程</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="wrap hero">
+    <div class="avatar">
+      <img id="avatar" src="assets/avatar.jpg" alt="头像" />
+    </div>
+    <div class="intro">
+      <h1 data-bind="hero.name">滕宇堃</h1>
+      <p class="tags" data-bind="hero.tags">协作者 · 人文教育推动者 · 可持续转型实践者</p>
+      <p class="slogan" data-bind="hero.slogan">让土地、河流与人的故事在当下发生，用真实生活探索人类与地球共存的方式。</p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section id="mission" class="wrap card">
+    <h2>使命与愿景</h2>
+    <div class="grid cols-2">
+      <div>
+        <h3>使命</h3>
+        <p data-bind="mission.mission">探索社会可持续转型的方法。</p>
+      </div>
+      <div>
+        <h3>愿景</h3>
+        <p data-bind="mission.vision">构建一个遵循自然规律的、有抗风险能力的、合理自洽的、追求文化自觉的社区。</p>
+      </div>
+    </div>
+    <div class="legacy">
+      <h3>象征性作品</h3>
+      <p data-bind="mission.legacy">我希望在一块属于自己的土地上，逐步营造出一所“河流学校”。它将是一处真实的学习与生活场所，人们可以在这里交流、实践、留下故事。随着时间，它会不断生长，也会有谢幕的时刻，就像一条河流自然地流淌与消逝。</p>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="wrap">
+    <h2>我的经验与能力</h2>
+
+    <div class="xp-block">
+      <h3>🌊 河流 / 自然</h3>
+      <p data-bind="experience.river.desc"></p>
+      <ul class="bullets" data-list="experience.river.cases"></ul>
+    </div>
+
+    <div class="xp-block">
+      <h3>🌍 土地 / 空间</h3>
+      <p data-bind="experience.land.desc"></p>
+      <ul class="bullets" data-list="experience.land.cases"></ul>
+    </div>
+
+    <div class="xp-block">
+      <h3>📖 人文 / 学习</h3>
+      <p data-bind="experience.humanities.desc"></p>
+      <ul class="bullets" data-list="experience.humanities.cases"></ul>
+    </div>
+
+    <div class="xp-block">
+      <h3>🤝 网络 / 协作</h3>
+      <p data-bind="experience.network.desc"></p>
+      <ul class="bullets" data-list="experience.network.cases"></ul>
+    </div>
+  </section>
+
+  <!-- Services & Contact -->
+  <section id="services" class="wrap">
+    <h2>服务与合作</h2>
+    <div class="grid cols-3">
+      <div class="card service">
+        <h3>协作</h3>
+        <p data-bind="services.collab.desc">
+          我提供基于 ToP 协作方法的工作坊与咨询服务，支持组织和群体在复杂问题下找到共同语言与行动方向。通过对话设计、群体引导和议题共创，帮助团队形成清晰目标、可执行方案与更具凝聚力的合作关系。
+        </p>
+      </div>
+      <div class="card service">
+        <h3>人文学习</h3>
+        <p data-bind="services.learning.desc">我主持与开发人文学习项目（营地、读书会、线上共学等）。</p>
+        <p><a class="btn" id="learnLink" href="#" target="_blank" rel="noopener">访问青塬官网</a></p>
+      </div>
+      <div class="card service">
+        <h3>联系方式</h3>
+        <ul class="list">
+          <li>邮箱：<a id="emailLink" href="#" data-bind="services.contact.email">tengyukun1995@gmail.com</a></li>
+        </ul>
+        <div class="qrcode">
+          <img id="qrcode" src="assets/wechat-qrcode.png" alt="微信/公众号二维码" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="timeline" class="wrap card">
+    <h2>我的历程</h2>
+    <p class="muted">（完整信息图展示，替换 <code>assets/timeline.png</code> 即可）</p>
+    <div class="timeline-img">
+      <img id="timelineImg" src="assets/timeline.png" alt="时间轴信息图" />
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span data-bind="site.footer">© 2025 Yukun Teng · 本站内容采用 CC BY-NC-SA 4.0 协议共享</span>
+      <a href="#hero" class="top" aria-label="回到顶部">↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+:root{
+  --bg:#FAFAF8; --fg:#222; --muted:#6b6b6b;
+  --brand:#176B52; --blue:#2D6AA3; --brown:#8B6F47;
+  --card:#fff; --border:#e7e7e7; --shadow:0 6px 20px rgba(0,0,0,.06);
+  --max:1100px; --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0f1113; --fg:#e8e8e8; --muted:#a2a2a2; --card:#15181b; --border:#2a2e33; --shadow:none; }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}
+img{max-width:100%;display:block}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max);margin:0 auto;padding:24px 16px}
+.header{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px);background:color-mix(in oklab, var(--bg) 85%, transparent);border-bottom:1px solid var(--border);z-index:10}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{font-weight:600}
+.brand{color:var(--brand)}
+.spacer{flex:1}
+.hero{display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:center;margin-top:16px}
+.avatar{width:140px;height:140px;border-radius:50%;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow)}
+.hero h1{font-size:28px;margin:0 0 6px}
+.tags{color:var(--muted);margin:0 0 8px}
+.slogan{font-size:18px;margin:0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin:16px 0}
+.grid{display:grid;gap:16px}
+.grid.cols-2{grid-template-columns:1fr;}.grid.cols-3{grid-template-columns:1fr}
+@media(min-width:900px){.grid.cols-2{grid-template-columns:1fr 1fr}.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+h2{font-size:24px;margin:0 0 10px}
+h3{font-size:18px;margin:10px 0}
+.xp-block{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin:14px 0}
+.bullets{margin:8px 0 0 18px}
+.bullets li{margin:6px 0}
+.service .btn{display:inline-block;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;border:1px solid color-mix(in oklab, var(--brand) 75%, #000);text-decoration:none}
+.service .btn:hover{filter:brightness(.95)}
+.qrcode{margin-top:10px}
+.timeline-img{border:1px dashed var(--border);border-radius:12px;padding:10px;background:color-mix(in oklab, var(--card) 80%, transparent)}
+.footer{border-top:1px solid var(--border);padding:18px 0;margin-top:12px}
+.footer .top{float:right;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:6px 10px;text-decoration:none}
+.muted{color:var(--muted)}
+
+
+(async function () {
+  // 读取 content.json
+  const res = await fetch('content.json', {cache: 'no-store'});
+  const data = await res.json();
+
+  // 简单绑定：元素的 data-bind 属性对应 JSON 路径
+  document.querySelectorAll('[data-bind]').forEach(el => {
+    const path = el.getAttribute('data-bind');
+    el.textContent = deepGet(data, path) ?? el.textContent;
+    if (el.id === 'emailLink') {
+      el.href = `mailto:${deepGet(data, path)}`;
+    }
+  });
+
+  // 列表绑定：ul[data-list="path"] 读取数组
+  document.querySelectorAll('[data-list]').forEach(ul => {
+    const arr = deepGet(data, ul.getAttribute('data-list')) || [];
+    ul.innerHTML = '';
+    arr.forEach(txt => {
+      const li = document.createElement('li');
+      li.textContent = txt;
+      ul.appendChild(li);
+    });
+  });
+
+  // 链接、图片、占位
+  const learnLink = document.getElementById('learnLink');
+  if (learnLink && data?.services?.learning?.link) learnLink.href = data.services.learning.link;
+
+  const qrcode = document.getElementById('qrcode');
+  if (qrcode && data?.services?.contact?.qrcode) qrcode.src = data.services.contact.qrcode;
+
+  const avatar = document.getElementById('avatar');
+  if (avatar && data?.hero?.avatar) avatar.src = data.hero.avatar;
+
+  const timelineImg = document.getElementById('timelineImg');
+  if (timelineImg && data?.timeline?.image) timelineImg.src = data.timeline.image;
+
+  // 工具函数：读取对象的深层路径 a.b.c
+  function deepGet(obj, path) {
+    return path.split('.').reduce((o, k) => (o || {})[k], obj);
+  }
+})();
+
+{
+  "site": {
+    "title": "滕宇堃｜个人品牌网站",
+    "description": "让土地、河流与人的故事在当下发生。",
+    "brand": "滕宇堃",
+    "footer": "© 2025 Yukun Teng · 本站内容采用 CC BY-NC-SA 4.0 协议共享"
+  },
+  "hero": {
+    "name": "滕宇堃",
+    "tags": "协作者 · 人文教育推动者 · 可持续转型实践者",
+    "slogan": "让土地、河流与人的故事在当下发生，用真实生活探索人类与地球共存的方式。",
+    "avatar": "assets/avatar.jpg"
+  },
+  "mission": {
+    "mission": "探索社会可持续转型的方法。",
+    "vision": "构建一个遵循自然规律的、有抗风险能力的、合理自洽的、追求文化自觉的社区。",
+    "legacy": "我希望在一块属于自己的土地上，逐步营造出一所“河流学校”。它将是一处真实的学习与生活场所，人们可以在这里交流、实践、留下故事。随着时间，它会不断生长，也会有谢幕的时刻，就像一条河流自然地流淌与消逝。"
+  },
+  "experience": {
+    "river": {
+      "desc": "河流是我行动与叙事的源头。从地方环保到国际水治理的实践，我把河流视作人与自然关系的隐喻，也关注生态危机中的“失落—死亡—重生”循环。",
+      "cases": ["东江之子、民间河长行动", "珠江水联合行动", "北欧三国考察、世界水周", "泰国 Gaia Ashram 生态村体验"]
+    },
+    "land": {
+      "desc": "土地是我的根基与承载。我通过院落、学习中心和社区实验，把空间营造成持续学习与实践的场所，探索生态生活如何落地。",
+      "cases": ["青塬文化 & 青塬学习中心（长沙岳麓山下）", "大理院子驻地", "广州乐活社区实验（垃圾分类、堆肥、稻作）", "线上社群实验（共学/共写/放映）"]
+    },
+    "humanities": {
+      "desc": "人文学习提供理解世界与自我的方法论。我通过研读、叙事与课程开发，把人文精神转化为教育行动与共学场域。",
+      "cases": ["启挚学舍人文营地", "经典营地课程（《庄子》《论语》）", "《道德经》线上读书会", "家族史研究与口述史", "人文基础课程（青塬学习中心）"]
+    },
+    "network": {
+      "desc": "网络象征联结与放大。我运用协作方法搭建对话与共创机制，让分散的力量汇聚成推动社会转型的能量。",
+      "cases": ["PEER合作（县镇青年参与公共事务）", "与善导、零废弃联盟跨组织合作", "东皋青年自组织探索", "ToP 协作方法应用"]
+    }
+  },
+  "services": {
+    "collab": {
+      "desc": "我提供基于 ToP 协作方法的工作坊与咨询服务，支持组织和群体在复杂问题下形成共同语言与行动方向，包括：议题澄清、共识生成、目标与路径设计、角色与流程梳理、行动/复盘工作坊等。"
+    },
+    "learning": {
+      "desc": "人文学习项目覆盖营地课程、读书会、线上共学等多种形式。",
+      "link": "https://example.com"   // 改成青塬官网地址
+    },
+    "contact": {
+      "email": "tengyukun1995@gmail.com",
+      "qrcode": "assets/wechat-qrcode.png"
+    }
+  },
+  "timeline": {
+    "image": "assets/timeline.png"
+  }
+}
+
