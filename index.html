@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+# Write the complete index.html file to /mnt/data and show a download link
+html_content = """<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
@@ -140,6 +141,7 @@
       <div>© <span id="year"></span> <span id="nameFoot">滕宇堃</span> · 基于 GitHub Pages 静态部署</div>
     </footer>
 
+    <!-- 站点内容：直接编辑此 JSON 即可替换全部文本/链接 -->
     <script id="site-content" type="application/json">
     {
       "name": "滕宇堃",
@@ -178,22 +180,54 @@
       let data = {};
       try { data = JSON.parse(contentTag.textContent); } catch(e) { console.error(e); }
 
+      // 顶部
       $('#name').textContent = data.name || '';
       $('#nameFoot').textContent = data.name || '';
       (data.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='chip'; s.textContent=t; $('#tags').appendChild(s); });
       $('#headline').textContent = data.headline || '';
       $('#subhead').textContent = data.subhead || '';
+
+      // 文本块
       $('#aboutBody').textContent = data.about || '';
       $('#capabilityBody').textContent = data.capability || '';
 
+      // 案例
       const cList = document.getElementById('caseList');
       (data.cases||[]).forEach(c=>{
         const li = document.createElement('li');
-        li.innerHTML = `<b>${c.name||''}</b><div class=\"small\">${c.detail||''}</div>${c.href?`<div style=\"margin-top:8px\"><a href=\"${c.href}\">${c.linkText||'了解更多'} →</a></div>`:''}`;
+        li.innerHTML = `<b>${c.name||''}</b><div class="small">${c.detail||''}</div>${c.href?`<div style="margin-top:8px"><a href="${c.href}">${c.linkText||'了解更多'} →</a></div>`:''}`;
         cList.appendChild(li);
       });
 
+      // 服务
       const sList = document.getElementById('serviceList');
       (data.services||[]).forEach(s=>{
         const li = document.createElement('li');
-        li.innerHTML = `<div class=\"service\">\n            <div><b>${s.title||''}</b><div class=\"small\">${s.desc||''}</div></div>\n           
+        li.innerHTML = `<div class="service">
+            <div><b>${s.title||''}</b><div class="small">${s.desc||''}</div></div>
+            <span class="pill">${s.note||''}</span>
+          </div>
+          ${s.href?`<div style="margin-top:8px"><a href="${s.href}">${s.linkText||'了解更多'} →</a></div>`:''}`;
+        sList.appendChild(li);
+      });
+
+      // 联系
+      const contact = (data.contact||{});
+      document.getElementById('contactBody').innerHTML = `
+        <div class="list">
+          <div>邮箱：<a href="mailto:${contact.email||''}">${contact.email||''}</a></div>
+          <div>微信：<span>${contact.wechat||''}</span></div>
+          <div>公众号：<span>${contact.pub||''}</span></div>
+          <div>其它： ${(contact.links||[]).map(l=>`<a href="${l.href}">${l.text}</a>`).join(' · ')}</div>
+        </div>
+      `;
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </div>
+</body>
+</html>
+"""
+with open("/mnt/data/index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+print("Saved to /mnt/data/index.html")
