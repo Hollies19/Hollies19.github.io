@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>滕宇堃 · 个人主页</title>
+  <meta name="description" content="协作者 · 人文教育推动者 · 可持续转型实践者 —— 滕宇堃的个人主页与项目案例、可提供的服务与联系信息。" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="滕宇堃 · 个人主页">
+  <meta property="og:description" content="协作者 · 人文教育推动者 · 可持续转型实践者">
+  <meta property="og:image" content="og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0f0b;
+      --card:#0f1611;
+      --ink:#e9f6ec;
+      --muted:#b8cbbf;
+      --brand:#57c38c;
+      --accent:#4bb7e6;
+      --ring: 0 0 0 3px rgba(87,195,140,.35);
+      --radius:20px;
+      --shadow:0 10px 30px rgba(0,0,0,.2), 0 2px 8px rgba(0,0,0,.15);
+    }
+    html,body{height:100%;}
+    body{
+      margin:0; background:radial-gradient(1200px 800px at 10% -10%, rgba(87,195,140,.12), transparent 60%),
+                   radial-gradient(1000px 700px at 110% 20%, rgba(75,183,230,.12), transparent 60%),
+                   var(--bg);
+      color:var(--ink);
+      font-family: 'Inter','Noto Sans SC', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: .2px;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{ text-decoration:underline }
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 20px 80px}
+    header{ display:grid; grid-template-columns: 120px 1fr; grid-gap:18px; align-items:center; }
+    .avatar{ width:110px; height:110px; border-radius:50%; overflow:hidden; border:2px solid rgba(255,255,255,.1); box-shadow:var(--shadow); background:#101510 }
+    .avatar img{ width:100%; height:100%; object-fit:cover }
+    .title h1{ font-size:clamp(26px, 4vw, 38px); margin:0 0 8px; font-weight:800; letter-spacing:.3px }
+    .title .tags{ display:flex; flex-wrap:wrap; gap:8px }
+    .chip{ padding:6px 10px; border:1px solid rgba(255,255,255,.14); border-radius:999px; font-size:12px; color:var(--muted); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.1)) }
+
+    .hero{ position:relative; margin:22px 0 28px; border-radius:var(--radius); overflow:hidden; background:linear-gradient(135deg, rgba(87,195,140,.12), rgba(75,183,230,.09)); border:1px solid rgba(255,255,255,.08) }
+    .hero svg{ position:absolute; inset:0; opacity:.45 }
+    .hero-content{ position:relative; padding:28px 24px }
+    .hero h2{ margin:0 0 6px; font-size:clamp(18px, 2.4vw, 22px); font-weight:700; color:var(--ink)}
+    .hero p{ margin:8px 0 0; color:var(--muted); line-height:1.7 }
+
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); grid-gap:18px; }
+    .card{ grid-column: span 12; background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden }
+    .card h3{ font-size:18px; letter-spacing:.3px; margin:0; padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.04)) }
+    .card .body{ padding:16px 18px; color:var(--muted); line-height:1.8 }
+
+    .list{ display:flex; flex-direction:column; gap:14px }
+    .list li{ list-style:none; background:rgba(255,255,255,.02); padding:12px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.06) }
+    .list b{ color:var(--ink) }
+
+    .service{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px }
+    .pill{ font-size:12px; border:1px solid rgba(255,255,255,.14); padding:4px 8px; border-radius:999px; color:var(--muted)}
+
+    .cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:12px }
+    .btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px;
+      background:linear-gradient(180deg, #72f2bd, #3fd298); border:1px solid #b3f7de;
+      color:#0a0f0b; font-weight:800; border-radius:12px }
+    .btn:hover{ box-shadow:var(--ring) }
+    .btn.secondary{ background:linear-gradient(180deg, #7ad3ff, #4bb7e6); border-color:#a6e4ff; color:#0a0f0b }
+
+    footer{ margin-top:26px; color:var(--muted); font-size:13px; text-align:center }
+    .small{ font-size:13px }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="avatar">
+        <img src="avatar-circle.png" alt="avatar"/>
+      </div>
+      <div class="title">
+        <h1 id="name">滕宇堃</h1>
+        <div class="tags" id="tags"></div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <svg viewBox="0 0 1100 220" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="rgba(87,195,140,.6)"/>
+            <stop offset="100%" stop-color="rgba(75,183,230,.7)"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,160 C200,80 400,240 600,160 C800,80 900,120 1100,60" fill="none" stroke="url(#g)" stroke-width="2"/>
+        <path d="M0,200 C220,120 380,200 640,120 C820,60 980,160 1100,110" fill="none" stroke="url(#g)" stroke-width="1.2"/>
+        <path d="M0,120 C180,160 360,80 520,120 C720,180 960,40 1100,90" fill="none" stroke="url(#g)" stroke-width="1"/>
+      </svg>
+      <div class="hero-content">
+        <h2 id="headline"></h2>
+        <p id="subhead"></p>
+        <div class="cta">
+          <a id="ctaPrimary" class="btn" href="#contact">联系与合作</a>
+          <a id="ctaSecondary" class="btn secondary" href="#services">查看可提供的服务</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card" id="about">
+        <h3>关于我</h3>
+        <div class="body" id="aboutBody"></div>
+      </article>
+
+      <article class="card" id="capability">
+        <h3>我的核心能力</h3>
+        <div class="body" id="capabilityBody"></div>
+      </article>
+
+      <article class="card" id="cases">
+        <h3>经验聚焦</h3>
+        <div class="body">
+          <ul class="list" id="caseList"></ul>
+        </div>
+      </article>
+
+      <article class="card" id="services">
+        <h3>可提供的服务</h3>
+        <div class="body">
+          <ul class="list" id="serviceList"></ul>
+        </div>
+      </article>
+
+      <article class="card" id="contact">
+        <h3>联系与合作</h3>
+        <div class="body" id="contactBody"></div>
+      </article>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> <span id="nameFoot">滕宇堃</span> · 基于 GitHub Pages 静态部署</div>
+    </footer>
+
+    <script id="site-content" type="application/json">
+    {
+      "name": "滕宇堃",
+      "tags": ["协作者", "人文教育推动者", "可持续转型实践者"],
+      "headline": "让土地、河流与人的故事在当下发生，用真实生活探索人类与地球共存的方式。",
+      "subhead": "我关注人文与可持续的交汇：通过协作方法与学习型社群，推动个体成长、项目落地与在地改善。",
+      "about": "长期致力于公共领域的跨组织、跨机构社群网络发展，关注教育、环境与社区等领域的协作与成长。自2014年起进入公益与教育实践，2018年后将可持续发展理念与社区教育结合，运用PBL、服务学习等参与式教育方法，先后发起“东皋青年”青年可持续社区探索计划、“启挚学舍”人文教育项目、“洞穴奇谈”可持续对话项目等，发起并编制《盒子中的人》疫情共写记录册，以群体叙事回应社会处境。2022年以来，作为青塬文化合伙人，推动人文主题研习营、社会调研营、人文学社项目及线上长期学习社群，探索以人文教育方法培育青年公共精神；同时担任PEER毅恒挚友顾问，推动县镇青年参与公共事务，促进跨地域、跨机构的青年网络发展。在协作实践方面，持续运用协作技术与对话方法，支持教育、环境及公益领域的组织与网络建设，致力于通过群体学习与跨界合作推动社会转型。",
+      "capability": "生成真实的学习与共创场域：把人聚拢起来，让他们在对话、协作和实践中找到力量与方法。",
+      "services": [
+        {"title":"协作设计与引导","desc":"以 ToP 技术为主，设计并带领共创工作坊、战略转型工作坊、跨组织协作与冲突调解。","note":"面向机构与跨部门团队","linkText":"具体案例","href":"#"},
+        {"title":"项目咨询（公益项目设计/教育公平/可持续社区）","desc":"从问题澄清、路径设计到试点落地与复盘评估，沉淀 SOP 与可迁移方法。","note":"按项目计费","href":"#"},
+        {"title":"人文课程与营地","desc":"经典研修班、人文基础课、可持续人生一课、人文学社、社会调研营、研习营等。","note":"可定制 / 支持合办","linkText":"前往青塬文化官网","href":"#"},
+        {"title":"演讲与分享","desc":"人文×可持续、协作方法、学习共同体搭建等主题。","note":"欢迎高校/企业/社区邀请","href":"#"}
+      ],
+      "cases": [
+        {"name":"河流 / 自然","detail":"河流是我行动与叙事的源头。从地方环保到国际水治理的实践中，逐渐把河流视作人与自然关系的隐喻。它象征流动与生命力，也提醒我关注生态危机中的‘新生—死亡—复苏’循环。","linkText":"具体案例","href":"#"},
+        {"name":"土地 / 空间","detail":"土地是我的根基与承载。通过院落、学习中心和社区实验，我尝试把空间营造成持续学习与实践的场所，探索生态生活如何落地。土地意味着关系和扎根，既是物理空间，也是生活方式的试验田。","linkText":"具体案例","href":"#"},
+        {"name":"人文 / 学习","detail":"人文学习为我提供理解世界与自我的方法论。从经典到现实，从个人生命史到社会议题，我通过研读、叙事与课程开发，把人文精神转化为教育行动和共学场域。","linkText":"具体案例","href":"#"},
+        {"name":"网络 / 协作","detail":"网络象征联结与放大。在跨组织、跨议题的合作中，我运用协作方法推动青年与社会组织的互动，搭建对话与共创机制，让分散的力量汇聚成推动社会转型的能量。","linkText":"具体案例","href":"#"}
+      ],
+      "contact": {
+        "email":"tengyukun1995@gmail.com",
+        "wechat":"JamesT95",
+        "links":[]
+      }
+    }
+    </script>
+
+    <script>
+      const $ = (sel)=>document.querySelector(sel);
+      const contentTag = document.getElementById('site-content');
+      let data = {};
+      try { data = JSON.parse(contentTag.textContent); } catch(e) { console.error(e); }
+
+      // 顶部
+      $('#name').textContent = data.name || '';
+      $('#nameFoot').textContent = data.name || '';
+      (data.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='chip'; s.textContent=t; $('#tags').appendChild(s); });
+      $('#headline').textContent = data.headline || '';
+      $('#subhead').textContent = data.subhead || '';
+
+      // 文本块
+      $('#aboutBody').textContent = data.about || '';
+      $('#capabilityBody').textContent = data.capability || '';
+
+      // 案例
+      const cList = document.getElementById('caseList');
+      (data.cases||[]).forEach(c=>{
+        const li = document.createElement('li');
+        li.innerHTML = `<b>${c.name||''}</b><div class="small">${c.detail||''}</div>${c.href?`<div style="margin-top:8px"><a href="${c.href}">${c.linkText||'了解更多'} →</a></div>`:''}`;
+        cList.appendChild(li);
+      });
+
+      // 服务
+      const sList = document.getElementById('serviceList');
+      (data.services||[]).forEach(s=>{
+        const li = document.createElement('li');
+        li.innerHTML = `<div class="service">
+            <div><b>${s.title||''}</b><div class="small">${s.desc||''}</div></div>
+            <span class="pill">${s.note||''}</span>
+          </div>
+          ${s.href?`<div style="margin-top:8px"><a href="${s.href}">${s.linkText||'了解更多'} →</a></div>`:''}`;
+        sList.appendChild(li);
+      });
+
+      // 联系（只保留邮箱与微信）
+      const contact = (data.contact||{});
+      document.getElementById('contactBody').innerHTML = `
+        <div class="list">
+          <div>邮箱：<a href="mailto:${contact.email||''}">${contact.email||''}</a></div>
+          <div>微信：<span>${contact.wechat||''}</span></div>
+        </div>
+      `;
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </div>
+</body>
+</html>
