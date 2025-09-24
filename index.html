@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0a0f0b;           /* 背景深绿 */
+      --bg:#176B52;           /* 背景深绿 */
       --card:#0f1611;         /* 卡片深色 */
       --ink:#e9f6ec;          /* 主文字 */
       --muted:#b8cbbf;        /* 次级文字 */
@@ -164,10 +164,6 @@
       "contact": {
         "email":"tengyukun1995@gmail.com",
         "wechat":"JamesT95",
-        "pub":"",
-        "links":[
-          {"text":"GitHub","href":"#"},
-          {"text":"LinkedIn","href":"#"}
         ]
       }
     }
@@ -216,8 +212,6 @@
         <div class="list">
           <div>邮箱：<a href="mailto:${contact.email||''}">${contact.email||''}</a></div>
           <div>微信：<span>${contact.wechat||''}</span></div>
-          <div>公众号：<span>${contact.pub||''}</span></div>
-          <div>其它： ${(contact.links||[]).map(l=>`<a href="${l.href}">${l.text}</a>`).join(' · ')}</div>
         </div>
       `;
 
