@@ -1,129 +1,281 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-bind="site.title">个人品牌网站</title>
-  <meta name="description" data-bind="site.description" content="让土地、河流与人的故事在当下发生。" />
-  <link rel="icon" href="assets/icon.svg" />
-  <link rel="preload" href="assets/avatar.jpg" as="image" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>滕宇堃 · 个人主页</title>
+  <meta name="description" content="协作者 · 人文教育推动者 · 可持续转型实践者 —— 滕宇堃的个人主页与项目案例、可提供的服务与联系信息。" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0f0b;           /* 背景深绿 */
+      --card:#0f1611;         /* 卡片深色 */
+      --ink:#e9f6ec;          /* 主文字 */
+      --muted:#b8cbbf;        /* 次级文字 */
+      --brand:#57c38c;        /* 品牌绿 */
+      --accent:#4bb7e6;       /* 辅助蓝 */
+      --ring: 0 0 0 3px rgba(87,195,140,.35);
+      --radius:20px;
+      --shadow:0 10px 30px rgba(0,0,0,.2), 0 2px 8px rgba(0,0,0,.15);
+    }
+    html,body{height:100%;}
+    body{
+      margin:0; background:radial-gradient(1200px 800px at 10% -10%, rgba(87,195,140,.12), transparent 60%),
+                   radial-gradient(1000px 700px at 110% 20%, rgba(75,183,230,.12), transparent 60%),
+                   var(--bg);
+      color:var(--ink);
+      font-family: 'Inter','Noto Sans SC', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: .2px;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{ text-decoration:underline }
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 20px 80px}
+    header{ display:grid; grid-template-columns: 120px 1fr; grid-gap:18px; align-items:center; }
+    .avatar{ width:110px; height:110px; border-radius:50%; overflow:hidden; border:2px solid rgba(255,255,255,.1); box-shadow:var(--shadow); background:#101510 }
+    .avatar img{ width:100%; height:100%; object-fit:cover }
+    .title h1{ font-size:clamp(26px, 4vw, 38px); margin:0 0 8px; font-weight:800; letter-spacing:.3px }
+    .title .tags{ display:flex; flex-wrap:wrap; gap:8px }
+    .chip{ padding:6px 10px; border:1px solid rgba(255,255,255,.14); border-radius:999px; font-size:12px; color:var(--muted); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.1)) }
+
+    /* 顶部抽象线条背景 */
+    .hero{ position:relative; margin:22px 0 28px; border-radius:var(--radius); overflow:hidden; background:linear-gradient(135deg, rgba(87,195,140,.12), rgba(75,183,230,.09)); border:1px solid rgba(255,255,255,.08) }
+    .hero svg{ position:absolute; inset:0; opacity:.45 }
+    .hero-content{ position:relative; padding:28px 24px }
+    .hero h2{ margin:0 0 6px; font-size:clamp(18px, 2.4vw, 22px); font-weight:700; color:var(--ink)}
+    .hero p{ margin:8px 0 0; color:var(--muted); line-height:1.7 }
+
+    /* 栅格区块 */
+    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); grid-gap:18px; }
+    .card{ grid-column: span 12; background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden }
+    .card h3{ font-size:18px; letter-spacing:.3px; margin:0; padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.04)) }
+    .card .body{ padding:16px 18px; color:var(--muted); line-height:1.8 }
+
+    .two{ grid-column: span 12 }
+    @media(min-width:860px){
+      .two{ grid-column: span 6 }
+    }
+
+    .list{ display:flex; flex-direction:column; gap:14px }
+    .list li{ list-style:none; background:rgba(255,255,255,.02); padding:12px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.06) }
+    .list b{ color:var(--ink) }
+
+    .service{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px }
+    .pill{ font-size:12px; border:1px solid rgba(255,255,255,.14); padding:4px 8px; border-radius:999px; color:var(--muted)}
+
+    .cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:12px }
+    .btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; background:linear-gradient(180deg, rgba(87,195,140,.25), rgba(87,195,140,.15)); border:1px solid rgba(87,195,140,.4); color:#0b130e; font-weight:700; border-radius:12px }
+    .btn:hover{ box-shadow:var(--ring) }
+    .btn.secondary{ background:linear-gradient(180deg, rgba(75,183,230,.18), rgba(75,183,230,.1)); border-color: rgba(75,183,230,.4); color:#0c1215 }
+
+    footer{ margin-top:26px; color:var(--muted); font-size:13px; text-align:center }
+    .small{ font-size:13px }
+
+    /* 时间线 */
+    .timeline{ position:relative; padding-left:18px; }
+    .timeline:before{ content:""; position:absolute; left:7px; top:0; bottom:0; width:2px; background:rgba(255,255,255,.12) }
+    .tl-item{ position:relative; margin:12px 0 16px }
+    .tl-item:before{ content:""; position:absolute; left:-1px; top:6px; width:14px; height:14px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(87,195,140,.18) }
+    .tl-item .when{ font-weight:700; color:var(--ink) }
+
+    /* 可编辑块高亮说明 */
+    .edit-hint{ font-size:12px; color:var(--muted); border-left:3px solid rgba(255,255,255,.15); padding-left:10px }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <nav class="nav wrap">
-      <a class="brand" href="#hero" data-bind="site.brand">滕宇堃</a>
-      <div class="spacer"></div>
-      <a href="#mission">愿景</a>
-      <a href="#experience">经验</a>
-      <a href="#services">服务</a>
-      <a href="#timeline">历程</a>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section id="hero" class="wrap hero">
-    <div class="avatar">
-      <img id="avatar" src="assets/avatar.jpg" alt="头像" />
-    </div>
-    <div class="intro">
-      <h1 data-bind="hero.name">滕宇堃</h1>
-      <p class="tags" data-bind="hero.tags">协作者 · 人文教育推动者 · 可持续转型实践者</p>
-      <p class="slogan" data-bind="hero.slogan">让土地、河流与人的故事在当下发生，用真实生活探索人类与地球共存的方式。</p>
-    </div>
-  </section>
-
-  <!-- Mission & Vision -->
-  <section id="mission" class="wrap card">
-    <h2>使命与愿景</h2>
-    <div class="grid cols-2">
-      <div>
-        <h3>使命</h3>
-        <p data-bind="mission.mission">探索社会可持续转型的方法。</p>
+  <div class="wrap">
+    <header>
+      <div class="avatar">
+        <!-- 替换为你的头像链接 -->
+        <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=480&auto=format&fit=crop" alt="avatar"/>
       </div>
-      <div>
-        <h3>愿景</h3>
-        <p data-bind="mission.vision">构建一个遵循自然规律的、有抗风险能力的、合理自洽的、追求文化自觉的社区。</p>
+      <div class="title">
+        <h1 id="name">滕宇堃</h1>
+        <div class="tags" id="tags"></div>
       </div>
-    </div>
-    <div class="legacy">
-      <h3>象征性作品</h3>
-      <p data-bind="mission.legacy">我希望在一块属于自己的土地上，逐步营造出一所“河流学校”。它将是一处真实的学习与生活场所，人们可以在这里交流、实践、留下故事。随着时间，它会不断生长，也会有谢幕的时刻，就像一条河流自然地流淌与消逝。</p>
-    </div>
-  </section>
+    </header>
 
-  <!-- Experience -->
-  <section id="experience" class="wrap">
-    <h2>我的经验与能力</h2>
-
-    <div class="xp-block">
-      <h3>🌊 河流 / 自然</h3>
-      <p data-bind="experience.river.desc"></p>
-      <ul class="bullets" data-list="experience.river.cases"></ul>
-    </div>
-
-    <div class="xp-block">
-      <h3>🌍 土地 / 空间</h3>
-      <p data-bind="experience.land.desc"></p>
-      <ul class="bullets" data-list="experience.land.cases"></ul>
-    </div>
-
-    <div class="xp-block">
-      <h3>📖 人文 / 学习</h3>
-      <p data-bind="experience.humanities.desc"></p>
-      <ul class="bullets" data-list="experience.humanities.cases"></ul>
-    </div>
-
-    <div class="xp-block">
-      <h3>🤝 网络 / 协作</h3>
-      <p data-bind="experience.network.desc"></p>
-      <ul class="bullets" data-list="experience.network.cases"></ul>
-    </div>
-  </section>
-
-  <!-- Services & Contact -->
-  <section id="services" class="wrap">
-    <h2>服务与合作</h2>
-    <div class="grid cols-3">
-      <div class="card service">
-        <h3>协作</h3>
-        <p data-bind="services.collab.desc">
-          我提供基于 ToP 协作方法的工作坊与咨询服务，支持组织和群体在复杂问题下找到共同语言与行动方向。通过对话设计、群体引导和议题共创，帮助团队形成清晰目标、可执行方案与更具凝聚力的合作关系。
-        </p>
-      </div>
-      <div class="card service">
-        <h3>人文学习</h3>
-        <p data-bind="services.learning.desc">我主持与开发人文学习项目（营地、读书会、线上共学等）。</p>
-        <p><a class="btn" id="learnLink" href="#" target="_blank" rel="noopener">访问青塬官网</a></p>
-      </div>
-      <div class="card service">
-        <h3>联系方式</h3>
-        <ul class="list">
-          <li>邮箱：<a id="emailLink" href="#" data-bind="services.contact.email">tengyukun1995@gmail.com</a></li>
-        </ul>
-        <div class="qrcode">
-          <img id="qrcode" src="assets/wechat-qrcode.png" alt="微信/公众号二维码" />
+    <section class="hero">
+      <!-- 抽象线条背景：可替换为你喜欢的插画 -->
+      <svg viewBox="0 0 1100 220" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="rgba(87,195,140,.6)"/>
+            <stop offset="100%" stop-color="rgba(75,183,230,.7)"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,160 C200,80 400,240 600,160 C800,80 900,120 1100,60" fill="none" stroke="url(#g)" stroke-width="2"/>
+        <path d="M0,200 C220,120 380,200 640,120 C820,60 980,160 1100,110" fill="none" stroke="url(#g)" stroke-width="1.2"/>
+        <path d="M0,120 C180,160 360,80 520,120 C720,180 960,40 1100,90" fill="none" stroke="url(#g)" stroke-width="1"/>
+      </svg>
+      <div class="hero-content">
+        <h2 id="headline"></h2>
+        <p id="subhead"></p>
+        <div class="cta">
+          <a id="ctaPrimary" class="btn" href="#contact">联系与合作</a>
+          <a id="ctaSecondary" class="btn secondary" href="#services">查看可提供的服务</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Timeline -->
-  <section id="timeline" class="wrap card">
-    <h2>我的历程</h2>
-    <p class="muted">（完整信息图展示，替换 <code>assets/timeline.png</code> 即可）</p>
-    <div class="timeline-img">
-      <img id="timelineImg" src="assets/timeline.png" alt="时间轴信息图" />
-    </div>
-  </section>
+    <section class="grid">
+      <article class="card two" id="about">
+        <h3>关于我</h3>
+        <div class="body" id="aboutBody"></div>
+      </article>
 
-  <footer class="footer">
-    <div class="wrap">
-      <span data-bind="site.footer">© 2025 Yukun Teng · 本站内容采用 CC BY-NC-SA 4.0 协议共享</span>
-      <a href="#hero" class="top" aria-label="回到顶部">↑</a>
-    </div>
-  </footer>
+      <article class="card two" id="vision">
+        <h3>愿景（一句话）</h3>
+        <div class="body" id="visionBody"></div>
+      </article>
 
-  <script src="script.js"></script>
+      <article class="card two" id="capability">
+        <h3>我的核心能力</h3>
+        <div class="body" id="capabilityBody"></div>
+      </article>
+
+      <article class="card two" id="legacy">
+        <h3>象征性作品</h3>
+        <div class="body" id="legacyBody"></div>
+      </article>
+
+      <article class="card" id="services">
+        <h3>可提供的服务</h3>
+        <div class="body">
+          <ul class="list" id="serviceList"></ul>
+          <p class="edit-hint">💡 所有文字与外链可在下方 JSON 中修改。</p>
+        </div>
+      </article>
+
+      <article class="card two" id="cases">
+        <h3>精选项目案例</h3>
+        <div class="body">
+          <ul class="list" id="caseList"></ul>
+        </div>
+      </article>
+
+      <article class="card two" id="timeline">
+        <h3>我的历程（部分节点）</h3>
+        <div class="body timeline" id="timelineList"></div>
+        <div class="body small">👉 完整年谱与信息图可后续外链到你的仓库文件。</div>
+      </article>
+
+      <article class="card" id="contact">
+        <h3>联系与合作</h3>
+        <div class="body" id="contactBody"></div>
+      </article>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> <span id="nameFoot">滕宇堃</span> · 基于 GitHub Pages 静态部署</div>
+    </footer>
+
+    <!-- 站点内容：直接编辑此 JSON 即可替换全部文本/链接 -->
+    <script id="site-content" type="application/json">
+    {
+      "name": "滕宇堃",
+      "tags": ["协作者", "人文教育推动者", "可持续转型实践者"],
+      "headline": "把人聚拢起来，在真实的学习与共创中找到方法与力量。",
+      "subhead": "我关注人文与可持续的交汇：通过协作方法与学习型社群，推动个体成长、项目落地与在地改善。",
+      "about": "我长期在教育、公益与可持续议题上工作，擅长以协作方法（如 ToP / ORID）组织多方对话与共创，在真实的空间与场域里，把想法变成可复用的流程与成果。过往与 PEER 毅恒挚友、启挚学舍、零废弃联盟等组织合作，推进县镇青年参与公共事务与学习实践。",
+      "vision_one_line": "构建一个遵循自然规律的、有抗风险能力的、合理自洽的、追求文化自觉的社区。",
+      "capability": "生成真实的学习与共创场域：把人聚拢起来，让他们在对话、协作和实践中找到力量与方法。",
+      "legacy": "在一块属于自己的土地上，孕育并完成一个关于“河流”的学习型 Training School —— 它生长、汇聚、传承，最终走向死亡，成为一生的生命之作。",
+      "services": [
+        {"title":"协作设计与引导","desc":"以 ToP / ORID / 项目画布等方法，设计共创工作坊、愿景对齐、跨组织协作与冲突调解。","note":"面向机构与跨部门团队","linkText":"获取方案样例","href":"#"},
+        {"title":"项目咨询（公益/教育/社区）","desc":"从问题澄清、路径设计到试点落地与复盘评估，沉淀 SOP 与可迁移方法。","note":"按项目计费","href":"#"},
+        {"title":"人文课程与营地","desc":"经典会读、人文基础课、社会调研营、可持续研修班等","note":"可定制 / 支持合办","linkText":"前往青塬官网","href":"#"},
+        {"title":"研学与在地行动","desc":"围绕‘河流/土地’，组织走读、观察、系统图分析与小规模在地干预。","note":"含安全与风控方案","href":"#"},
+        {"title":"演讲与分享","desc":"人文×可持续、协作方法、学习共同体搭建等主题","note":"欢迎高校/企业/社区邀请","href":"#"}
+      ],
+      "cases": [
+        {"name":"启挚学舍 · 人文营地与课程标准化","detail":"从营地到长期学习体系，开发人文基础课与经典会读教案、助教机制与执行 SOP。"},
+        {"name":"PEER 协作顾问","detail":"支持县镇青年参与公共议题，设计愿景共创与对话流程，生成行动方案。"},
+        {"name":"广州垃圾分类跨机构协同","detail":"联动社区与机构推进低碳行动，形成可复制的社群动员流程。"},
+        {"name":"东江之子 / 民间河长行动","detail":"河流考察与公众参与课程设计，训练核心志愿者，产出调研工具与报告。"},
+        {"name":"北碚民国乡村建设研习营（筹）","detail":"以‘社会记忆×空间’为线索的在地学习与行动闭环设计。"}
+      ],
+      "timeline": [
+        {"when":"2017-2019","text":"在无锡灵山、岭南教育等机构任项目官员/主管，搭建设计教育与公益项目。"},
+        {"when":"2021-至今","text":"共同发起启挚学舍营地，推进青年社群与课程体系。"},
+        {"when":"2022-至今","text":"合伙青塬文化与学习中心，探索学习-实践共同体。"},
+        {"when":"2024","text":"开发‘可持续人生一课’、深度生态学共学，形成方法与课程雏形。"},
+        {"when":"2025","text":"推进‘Training School’ MVP：以河流/土地为主题的研习营闭环。"}
+      ],
+      "contact": {
+        "email":"tengyukun1995@gmail.com",
+        "wechat":"你的微信ID（可替换）",
+        "pub":"你的公众号（可替换）",
+        "links":[
+          {"text":"GitHub","href":"#"},
+          {"text":"LinkedIn","href":"#"}
+        ]
+      }
+    }
+    </script>
+
+    <script>
+      const $ = (sel)=>document.querySelector(sel);
+      const data = JSON.parse(document.getElementById('site-content').textContent);
+
+      // 顶部
+      $('#name').textContent = data.name;
+      $('#nameFoot').textContent = data.name;
+      data.tags.forEach(t=>{
+        const s = document.createElement('span'); s.className='chip'; s.textContent=t; $('#tags').appendChild(s);
+      });
+      $('#headline').textContent = data.headline;
+      $('#subhead').textContent = data.subhead;
+
+      // 文本块
+      $('#aboutBody').textContent = data.about;
+      $('#visionBody').textContent = data.vision_one_line;
+      $('#capabilityBody').textContent = data.capability;
+      $('#legacyBody').textContent = data.legacy;
+
+      // 服务
+      const sList = $('#serviceList');
+      data.services.forEach(s=>{
+        const li = document.createElement('li');
+        li.innerHTML = `<div class="service">
+            <div>
+              <b>${s.title}</b><div class="small">${s.desc}</div>
+            </div>
+            <span class="pill">${s.note||''}</span>
+          </div>
+          ${s.href?`<div style="margin-top:8px"><a href="${s.href}">${s.linkText||'了解更多'} →</a></div>`:''}`;
+        sList.appendChild(li);
+      });
+
+      // 案例
+      const cList = $('#caseList');
+      data.cases.forEach(c=>{
+        const li = document.createElement('li');
+        li.innerHTML = `<b>${c.name}</b><div class="small">${c.detail}</div>`; cList.appendChild(li);
+      });
+
+      // 时间线
+      const tl = $('#timelineList');
+      data.timeline.forEach(t=>{
+        const div = document.createElement('div');
+        div.className = 'tl-item';
+        div.innerHTML = `<div class="when">${t.when}</div><div>${t.text}</div>`;
+        tl.appendChild(div);
+      });
+
+      // 联系
+      const contact = data.contact;
+      $('#contactBody').innerHTML = `
+        <div class="list">
+          <div>邮箱：<a href="mailto:${contact.email}">${contact.email}</a></div>
+          <div>微信：<span>${contact.wechat}</span></div>
+          <div>公众号：<span>${contact.pub}</span></div>
+          <div>其它： ${contact.links.map(l=>`<a href="${l.href}">${l.text}</a>`).join(' · ')}</div>
+        </div>
+      `;
+
+      $('#year').textContent = new Date().getFullYear();
+    </script>
+  </div>
 </body>
 </html>
