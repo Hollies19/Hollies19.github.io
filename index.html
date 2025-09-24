@@ -52,9 +52,6 @@ html_content = """<!DOCTYPE html>
     .card h3{ font-size:18px; letter-spacing:.3px; margin:0; padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.06); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.04)) }
     .card .body{ padding:16px 18px; color:var(--muted); line-height:1.8 }
 
-    .two{ grid-column: span 12 }
-    @media(min-width:860px){ .two{ grid-column: span 6 } }
-
     .list{ display:flex; flex-direction:column; gap:14px }
     .list li{ list-style:none; background:rgba(255,255,255,.02); padding:12px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.06) }
     .list b{ color:var(--ink) }
@@ -107,17 +104,17 @@ html_content = """<!DOCTYPE html>
     </section>
 
     <section class="grid">
-      <article class="card two" id="about">
+      <article class="card" id="about">
         <h3>关于我</h3>
         <div class="body" id="aboutBody"></div>
       </article>
 
-      <article class="card two" id="capability">
+      <article class="card" id="capability">
         <h3>我的核心能力</h3>
         <div class="body" id="capabilityBody"></div>
       </article>
 
-      <article class="card two" id="cases">
+      <article class="card" id="cases">
         <h3>经验聚焦</h3>
         <div class="body">
           <ul class="list" id="caseList"></ul>
@@ -141,8 +138,7 @@ html_content = """<!DOCTYPE html>
       <div>© <span id="year"></span> <span id="nameFoot">滕宇堃</span> · 基于 GitHub Pages 静态部署</div>
     </footer>
 
-    <!-- 站点内容：直接编辑此 JSON 即可替换全部文本/链接 -->
-    <script id="site-content" type="application/json">
+   <script id="site-content" type="application/json">
     {
       "name": "滕宇堃",
       "tags": ["协作者", "人文教育推动者", "可持续转型实践者"],
