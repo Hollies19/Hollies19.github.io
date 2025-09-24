@@ -52,9 +52,7 @@
     .card .body{ padding:16px 18px; color:var(--muted); line-height:1.8 }
 
     .two{ grid-column: span 12 }
-    @media(min-width:860px){
-      .two{ grid-column: span 6 }
-    }
+    @media(min-width:860px){ .two{ grid-column: span 6 } }
 
     .list{ display:flex; flex-direction:column; gap:14px }
     .list li{ list-style:none; background:rgba(255,255,255,.02); padding:12px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.06) }
@@ -70,16 +68,6 @@
 
     footer{ margin-top:26px; color:var(--muted); font-size:13px; text-align:center }
     .small{ font-size:13px }
-
-    /* 时间线 */
-    .timeline{ position:relative; padding-left:18px; }
-    .timeline:before{ content:""; position:absolute; left:7px; top:0; bottom:0; width:2px; background:rgba(255,255,255,.12) }
-    .tl-item{ position:relative; margin:12px 0 16px }
-    .tl-item:before{ content:""; position:absolute; left:-1px; top:6px; width:14px; height:14px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(87,195,140,.18) }
-    .tl-item .when{ font-weight:700; color:var(--ink) }
-
-    /* 可编辑块高亮说明 */
-    .edit-hint{ font-size:12px; color:var(--muted); border-left:3px solid rgba(255,255,255,.15); padding-left:10px }
   </style>
 </head>
 <body>
@@ -96,7 +84,6 @@
     </header>
 
     <section class="hero">
-      <!-- 抽象线条背景：可替换为你喜欢的插画 -->
       <svg viewBox="0 0 1100 220" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
@@ -124,40 +111,23 @@
         <div class="body" id="aboutBody"></div>
       </article>
 
-      <article class="card two" id="vision">
-        <h3>愿景（一句话）</h3>
-        <div class="body" id="visionBody"></div>
-      </article>
-
       <article class="card two" id="capability">
         <h3>我的核心能力</h3>
         <div class="body" id="capabilityBody"></div>
       </article>
 
-      <article class="card two" id="legacy">
-        <h3>象征性作品</h3>
-        <div class="body" id="legacyBody"></div>
+      <article class="card two" id="cases">
+        <h3>经验聚焦</h3>
+        <div class="body">
+          <ul class="list" id="caseList"></ul>
+        </div>
       </article>
 
       <article class="card" id="services">
         <h3>可提供的服务</h3>
         <div class="body">
           <ul class="list" id="serviceList"></ul>
-          <p class="edit-hint">💡 所有文字与外链可在下方 JSON 中修改。</p>
         </div>
-      </article>
-
-      <article class="card two" id="cases">
-        <h3>精选项目案例</h3>
-        <div class="body">
-          <ul class="list" id="caseList"></ul>
-        </div>
-      </article>
-
-      <article class="card two" id="timeline">
-        <h3>我的历程（部分节点）</h3>
-        <div class="body timeline" id="timelineList"></div>
-        <div class="body small">👉 完整年谱与信息图可后续外链到你的仓库文件。</div>
       </article>
 
       <article class="card" id="contact">
@@ -170,42 +140,30 @@
       <div>© <span id="year"></span> <span id="nameFoot">滕宇堃</span> · 基于 GitHub Pages 静态部署</div>
     </footer>
 
-    <!-- 站点内容：直接编辑此 JSON 即可替换全部文本/链接 -->
     <script id="site-content" type="application/json">
     {
       "name": "滕宇堃",
       "tags": ["协作者", "人文教育推动者", "可持续转型实践者"],
-      "headline": "把人聚拢起来，在真实的学习与共创中找到方法与力量。",
+      "headline": "让土地、河流与人的故事在当下发生，用真实生活探索人类与地球共存的方式。",
       "subhead": "我关注人文与可持续的交汇：通过协作方法与学习型社群，推动个体成长、项目落地与在地改善。",
-      "about": "我长期在教育、公益与可持续议题上工作，擅长以协作方法（如 ToP / ORID）组织多方对话与共创，在真实的空间与场域里，把想法变成可复用的流程与成果。过往与 PEER 毅恒挚友、启挚学舍、零废弃联盟等组织合作，推进县镇青年参与公共事务与学习实践。",
-      "vision_one_line": "构建一个遵循自然规律的、有抗风险能力的、合理自洽的、追求文化自觉的社区。",
+      "about": "长期致力于公共领域的跨组织、跨机构社群网络发展，关注教育、环境与社区等领域的协作与成长。自2014年起进入公益与教育实践，2018年后将可持续发展理念与社区教育结合，运用PBL、服务学习等参与式教育方法，先后发起“东皋青年”青年可持续社区探索计划、“启挚学舍”人文教育项目、“洞穴奇谈”可持续对话项目等，发起并编制《盒子中的人》疫情共写记录册，以群体叙事回应社会处境。2022年以来，作为青塬文化合伙人，推动人文主题研习营、社会调研营、人文学社项目及线上长期学习社群，探索以人文教育方法培育青年公共精神；同时担任PEER毅恒挚友顾问，推动县镇青年参与公共事务，促进跨地域、跨机构的青年网络发展。在协作实践方面，持续运用协作技术与对话方法，支持教育、环境及公益领域的组织与网络建设，致力于通过群体学习与跨界合作推动社会转型。",
       "capability": "生成真实的学习与共创场域：把人聚拢起来，让他们在对话、协作和实践中找到力量与方法。",
-      "legacy": "在一块属于自己的土地上，孕育并完成一个关于“河流”的学习型 Training School —— 它生长、汇聚、传承，最终走向死亡，成为一生的生命之作。",
       "services": [
-        {"title":"协作设计与引导","desc":"以 ToP / ORID / 项目画布等方法，设计共创工作坊、愿景对齐、跨组织协作与冲突调解。","note":"面向机构与跨部门团队","linkText":"获取方案样例","href":"#"},
-        {"title":"项目咨询（公益/教育/社区）","desc":"从问题澄清、路径设计到试点落地与复盘评估，沉淀 SOP 与可迁移方法。","note":"按项目计费","href":"#"},
-        {"title":"人文课程与营地","desc":"经典会读、人文基础课、社会调研营、可持续研修班等","note":"可定制 / 支持合办","linkText":"前往青塬官网","href":"#"},
-        {"title":"研学与在地行动","desc":"围绕‘河流/土地’，组织走读、观察、系统图分析与小规模在地干预。","note":"含安全与风控方案","href":"#"},
-        {"title":"演讲与分享","desc":"人文×可持续、协作方法、学习共同体搭建等主题","note":"欢迎高校/企业/社区邀请","href":"#"}
+        {"title":"协作设计与引导","desc":"以 ToP 技术为主，设计并带领共创工作坊、战略转型工作坊、跨组织协作与冲突调解。","note":"面向机构与跨部门团队","linkText":"具体案例","href":"#"},
+        {"title":"项目咨询（公益项目设计/教育公平/可持续社区）","desc":"从问题澄清、路径设计到试点落地与复盘评估，沉淀 SOP 与可迁移方法。","note":"按项目计费","href":"#"},
+        {"title":"人文课程与营地","desc":"经典研修班、人文基础课、可持续人生一课、人文学社、社会调研营、研习营等。","note":"可定制 / 支持合办","linkText":"前往青塬文化官网","href":"#"},
+        {"title":"演讲与分享","desc":"人文×可持续、协作方法、学习共同体搭建等主题。","note":"欢迎高校/企业/社区邀请","href":"#"}
       ],
       "cases": [
-        {"name":"启挚学舍 · 人文营地与课程标准化","detail":"从营地到长期学习体系，开发人文基础课与经典会读教案、助教机制与执行 SOP。"},
-        {"name":"PEER 协作顾问","detail":"支持县镇青年参与公共议题，设计愿景共创与对话流程，生成行动方案。"},
-        {"name":"广州垃圾分类跨机构协同","detail":"联动社区与机构推进低碳行动，形成可复制的社群动员流程。"},
-        {"name":"东江之子 / 民间河长行动","detail":"河流考察与公众参与课程设计，训练核心志愿者，产出调研工具与报告。"},
-        {"name":"北碚民国乡村建设研习营（筹）","detail":"以‘社会记忆×空间’为线索的在地学习与行动闭环设计。"}
-      ],
-      "timeline": [
-        {"when":"2017-2019","text":"在无锡灵山、岭南教育等机构任项目官员/主管，搭建设计教育与公益项目。"},
-        {"when":"2021-至今","text":"共同发起启挚学舍营地，推进青年社群与课程体系。"},
-        {"when":"2022-至今","text":"合伙青塬文化与学习中心，探索学习-实践共同体。"},
-        {"when":"2024","text":"开发‘可持续人生一课’、深度生态学共学，形成方法与课程雏形。"},
-        {"when":"2025","text":"推进‘Training School’ MVP：以河流/土地为主题的研习营闭环。"}
+        {"name":"河流 / 自然","detail":"河流是我行动与叙事的源头。从地方环保到国际水治理的实践中，逐渐把河流视作人与自然关系的隐喻。它象征流动与生命力，也提醒我关注生态危机中的‘新生—死亡—复苏’循环。","linkText":"具体案例","href":"#"},
+        {"name":"土地 / 空间","detail":"土地是我的根基与承载。通过院落、学习中心和社区实验，我尝试把空间营造成持续学习与实践的场所，探索生态生活如何落地。土地意味着关系和扎根，既是物理空间，也是生活方式的试验田。","linkText":"具体案例","href":"#"},
+        {"name":"人文 / 学习","detail":"人文学习为我提供理解世界与自我的方法论。从经典到现实，从个人生命史到社会议题，我通过研读、叙事与课程开发，把人文精神转化为教育行动和共学场域。","linkText":"具体案例","href":"#"},
+        {"name":"网络 / 协作","detail":"网络象征联结与放大。在跨组织、跨议题的合作中，我运用协作方法推动青年与社会组织的互动，搭建对话与共创机制，让分散的力量汇聚成推动社会转型的能量。","linkText":"具体案例","href":"#"}
       ],
       "contact": {
         "email":"tengyukun1995@gmail.com",
-        "wechat":"你的微信ID（可替换）",
-        "pub":"你的公众号（可替换）",
+        "wechat":"JamesT95",
+        "pub":"",
         "links":[
           {"text":"GitHub","href":"#"},
           {"text":"LinkedIn","href":"#"}
@@ -216,66 +174,26 @@
 
     <script>
       const $ = (sel)=>document.querySelector(sel);
-      const data = JSON.parse(document.getElementById('site-content').textContent);
+      const contentTag = document.getElementById('site-content');
+      let data = {};
+      try { data = JSON.parse(contentTag.textContent); } catch(e) { console.error(e); }
 
-      // 顶部
-      $('#name').textContent = data.name;
-      $('#nameFoot').textContent = data.name;
-      data.tags.forEach(t=>{
-        const s = document.createElement('span'); s.className='chip'; s.textContent=t; $('#tags').appendChild(s);
-      });
-      $('#headline').textContent = data.headline;
-      $('#subhead').textContent = data.subhead;
+      $('#name').textContent = data.name || '';
+      $('#nameFoot').textContent = data.name || '';
+      (data.tags||[]).forEach(t=>{ const s=document.createElement('span'); s.className='chip'; s.textContent=t; $('#tags').appendChild(s); });
+      $('#headline').textContent = data.headline || '';
+      $('#subhead').textContent = data.subhead || '';
+      $('#aboutBody').textContent = data.about || '';
+      $('#capabilityBody').textContent = data.capability || '';
 
-      // 文本块
-      $('#aboutBody').textContent = data.about;
-      $('#visionBody').textContent = data.vision_one_line;
-      $('#capabilityBody').textContent = data.capability;
-      $('#legacyBody').textContent = data.legacy;
-
-      // 服务
-      const sList = $('#serviceList');
-      data.services.forEach(s=>{
+      const cList = document.getElementById('caseList');
+      (data.cases||[]).forEach(c=>{
         const li = document.createElement('li');
-        li.innerHTML = `<div class="service">
-            <div>
-              <b>${s.title}</b><div class="small">${s.desc}</div>
-            </div>
-            <span class="pill">${s.note||''}</span>
-          </div>
-          ${s.href?`<div style="margin-top:8px"><a href="${s.href}">${s.linkText||'了解更多'} →</a></div>`:''}`;
-        sList.appendChild(li);
+        li.innerHTML = `<b>${c.name||''}</b><div class=\"small\">${c.detail||''}</div>${c.href?`<div style=\"margin-top:8px\"><a href=\"${c.href}\">${c.linkText||'了解更多'} →</a></div>`:''}`;
+        cList.appendChild(li);
       });
 
-      // 案例
-      const cList = $('#caseList');
-      data.cases.forEach(c=>{
+      const sList = document.getElementById('serviceList');
+      (data.services||[]).forEach(s=>{
         const li = document.createElement('li');
-        li.innerHTML = `<b>${c.name}</b><div class="small">${c.detail}</div>`; cList.appendChild(li);
-      });
-
-      // 时间线
-      const tl = $('#timelineList');
-      data.timeline.forEach(t=>{
-        const div = document.createElement('div');
-        div.className = 'tl-item';
-        div.innerHTML = `<div class="when">${t.when}</div><div>${t.text}</div>`;
-        tl.appendChild(div);
-      });
-
-      // 联系
-      const contact = data.contact;
-      $('#contactBody').innerHTML = `
-        <div class="list">
-          <div>邮箱：<a href="mailto:${contact.email}">${contact.email}</a></div>
-          <div>微信：<span>${contact.wechat}</span></div>
-          <div>公众号：<span>${contact.pub}</span></div>
-          <div>其它： ${contact.links.map(l=>`<a href="${l.href}">${l.text}</a>`).join(' · ')}</div>
-        </div>
-      `;
-
-      $('#year').textContent = new Date().getFullYear();
-    </script>
-  </div>
-</body>
-</html>
+        li.innerHTML = `<div class=\"service\">\n            <div><b>${s.title||''}</b><div class=\"small\">${s.desc||''}</div></div>\n           
